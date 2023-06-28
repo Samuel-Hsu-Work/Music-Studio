@@ -13,10 +13,10 @@ const Navbar = () => {
     <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>
       <h1 className='w-full text-3xl font-bold text-[#00df9a]'>三秒 Music Page</h1>
       <ul className='hidden md:flex'>
-        <li className='p-4'><Link to="Home" smooth={true} duration={500}>Home</Link></li>
-        <li className='p-4'><Link to="Music Theory" smooth={true} offset={-200} duration={500}>Music Theory</Link></li>
-        <li className='p-4'><Link to="Terms" smooth={true} offset={-50} duration={500}>Terms</Link></li>
-        <li className='p-4'><Link to="Tools" smooth={true} offset={-100} duration={500}>Tools</Link></li>
+        <li className='p-4'><Link to="home" smooth={true} duration={500}>Home</Link></li>
+        <li className='p-4'><Link to="Theory" smooth={true} offset={-200} duration={500}>Theory</Link></li>
+        <li className='p-4'><Link to="terms" smooth={true} offset={-50} duration={500}>Terms</Link></li>
+        <li className='p-4'><Link to="tools" smooth={true} offset={-100} duration={500}>Tools</Link></li>
         <li className='p-4'><Link to="practice" smooth={true} offset={-50} duration={500}>practice</Link></li>
         <li className='p-4'><Link to="contact" smooth={true} offset={-50} duration={500}>contact</Link></li>
       </ul>
