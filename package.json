@@ -1,7 +1,7 @@
 {
   "name": "music-theory",
-  "homepage": "https://sky19930112.github.io/MusicTheory",
   "version": "0.1.0",
+  "homepage": "https://sky19930112.github.io/MusicTheory/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
