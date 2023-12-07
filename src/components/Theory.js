@@ -26,59 +26,49 @@ const Theory = () => {
   const [frequencies, setFrequencies] = useState([]);
 
   const noteSets = {
-    set1: ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'],
-    set2: ['D', 'E', 'F#', 'G', 'A', 'B', 'C#', 'D'],
+    set1: ['C', 'D', 'E', 'F', 'G', 'A', 'B'],
+    set2: ['D', 'E', 'F#', 'G', 'A', 'B', 'C#'],
   };
 
-  const notesInScale = ['C', 'C# / Db', 'D', 'D# / Eb', 'E', 'F', 'F# / Gb', 'G', 'G# / Ab', 'A', 'A# / Bb', 'B', 'C'];
-
-  const calculateFrequencies = () => {
-    const referenceFrequency = 440; // A4 frequency
-    const frequencies = notesInScale.map((note, index) => {
+  const calculateFrequencies = (firstNoteFrequency, selectedIndices) => {
+    const allFrequencies = ['C', 'C# / Db', 'D', 'D# / Eb', 'E', 'F', 'F# / Gb', 'G', 'G# / Ab', 'A', 'A# / Bb', 'B'].map((note, index) => {
       const halfSteps = index;
-      return referenceFrequency * Math.pow(2, halfSteps / 12);
+      return firstNoteFrequency * Math.pow(2, halfSteps / 12);
     });
-    return frequencies;
+
+    const selectedFrequencies = selectedIndices.map(index => allFrequencies[index]);
+    return selectedFrequencies;
   };
 
   const handleNotesSet1 = () => {
     setNotesSet(noteSets.set1);
-    setFrequencies([]);
+    setFrequencies(calculateFrequencies(261.63, [0, 2, 4, 5, 7, 9, 11]));
   };
 
   const handleNotesSet2 = () => {
     setNotesSet(noteSets.set2);
-    setFrequencies([]);
+    setFrequencies(calculateFrequencies(293.66, [0, 2, 4, 5, 7, 9, 11]));
   };
 
-  const handleCalculateFrequencies = () => {
-    setFrequencies(calculateFrequencies());
-  };
   return (
     <div className="App text-center p-8">
-      <h1 className="text-3xl font-bold mb-4">Musical Notes Grids</h1>
+      <h1 className="text-3xl font-bold mb-4 text-white">Musical Scales</h1>
       <div className="mb-4">
         <button onClick={handleNotesSet1} className="bg-blue-500 text-white px-4 py-2 rounded-md mb-2 mr-4">
-          Show Notes Set 1
+          C Major Scale
         </button>
         <button onClick={handleNotesSet2} className="bg-blue-500 text-white px-4 py-2 rounded-md mb-2">
-          Show Notes Set 2
+          D Major Scale
         </button>
       </div>
       <div className="flex justify-center">
         <div>
-          <h2 className="font-bold text-lg mb-2">Musical Notes</h2>
+          <h2 className="font-bold text-lg mb-2 text-white">Musical Notes</h2>
           <Grid data={notesSet} />
         </div>
         <div className="ml-8">
-          <h2 className="font-bold text-lg mb-2">Frequencies</h2>
-          {frequencies.length > 0 ? (
-            <Grid data={frequencies.map(freq => freq.toFixed(2) + ' Hz')} />
-          ) : (
-            <button onClick={handleCalculateFrequencies} className="bg-blue-500 text-white px-4 py-2 rounded-md">
-              Calculate Frequencies
-            </button>
-          )}
+          <h2 className="font-bold text-lg mb-2 text-white">Notes Frequencies</h2>
+          <Grid data={frequencies.map(freq => freq.toFixed(2) + ' Hz')} />
         </div>
       </div>
     </div>
