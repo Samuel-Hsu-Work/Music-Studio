@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/MusicTheory/static/css/main.1a1dd01e.css",
-    "main.js": "/MusicTheory/static/js/main.65e60751.js",
+    "main.css": "/MusicTheory/static/css/main.2ee956db.css",
+    "main.js": "/MusicTheory/static/js/main.b3c1c851.js",
     "index.html": "/MusicTheory/index.html",
-    "main.1a1dd01e.css.map": "/MusicTheory/static/css/main.1a1dd01e.css.map",
-    "main.65e60751.js.map": "/MusicTheory/static/js/main.65e60751.js.map"
+    "main.2ee956db.css.map": "/MusicTheory/static/css/main.2ee956db.css.map",
+    "main.b3c1c851.js.map": "/MusicTheory/static/js/main.b3c1c851.js.map"
   },
   "entrypoints": [
-    "static/css/main.1a1dd01e.css",
-    "static/js/main.65e60751.js"
+    "static/css/main.2ee956db.css",
+    "static/js/main.b3c1c851.js"
   ]
 }
