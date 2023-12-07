@@ -1,18 +1,40 @@
-import React from 'react'
+
+import React, { useState } from 'react';
+
+
+
+const GridCell = ({ note }) => {
+  return (
+    <div className="w-12 h-12 flex items-center justify-center border border-gray-300">
+      {note}
+    </div>
+  );
+};
+
+const Grid = ({ notes }) => {
+  return (
+    <div className="flex flex-wrap gap-4 text-white">
+      {notes.map((note, index) => (
+        <GridCell key={index} note={note} />
+      ))}
+    </div>
+  );
+};
 
 const Theory = () => {
+  const [showNotes, setShowNotes] = useState(false);
+  const musicalNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'];
+
+  const handleButtonClick = () => {
+    setShowNotes(!showNotes);
+  };
   return (
-    <div className='text-white'>
-      <div className='max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center'>
-        <p className='text-[#00df9a] font-bold p-2 sm:text-6xl'>
-          Theory Page
-        </p>
-        <h1 className='md:text-4xl sm:text-6x1 text-4xl font-bold md:py-6'>
-          
-        </h1>
-        <p className='md:text-2xl text-xl font-bold text-gray-500'></p>
-        <button className='bg-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black'>Get Started</button>
-      </div>
+    <div className="App text-center p-8">
+      <h1 className="text-3xl font-bold mb-4 text-white">Scales</h1>
+      <button onClick={handleButtonClick} className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4">
+        {showNotes ? 'Hide' : 'C Major Scales'}
+      </button>
+      {showNotes && <Grid notes={musicalNotes} />}
     </div>
   )
 }
