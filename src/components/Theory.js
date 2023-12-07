@@ -11,11 +11,11 @@ const GridCell = ({ content }) => {
   );
 };
 
-const Grid = ({ notes }) => {
+const Grid = ({ data }) => {
   return (
     <div className="flex flex-wrap gap-4 mb-8">
-      {notes.map((note, index) => (
-        <GridCell key={index} content={note} />
+      {data.map((item, index) => (
+        <GridCell key={index} content={item} />
       ))}
     </div>
   );
@@ -24,16 +24,18 @@ const Grid = ({ notes }) => {
 const Theory = () => {
   const [notesSet, setNotesSet] = useState([]);
   const [frequencies, setFrequencies] = useState([]);
-  
+
   const noteSets = {
     set1: ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'],
     set2: ['D', 'E', 'F#', 'G', 'A', 'B', 'C#', 'D'],
   };
 
-  const calculateFrequencies = (notes) => {
+  const notesInScale = ['C', 'C# / Db', 'D', 'D# / Eb', 'E', 'F', 'F# / Gb', 'G', 'G# / Ab', 'A', 'A# / Bb', 'B', 'C'];
+
+  const calculateFrequencies = () => {
     const referenceFrequency = 440; // A4 frequency
-    const frequencies = notes.map((note, index) => {
-      const halfSteps = index - 9;
+    const frequencies = notesInScale.map((note, index) => {
+      const halfSteps = index;
       return referenceFrequency * Math.pow(2, halfSteps / 12);
     });
     return frequencies;
@@ -41,12 +43,16 @@ const Theory = () => {
 
   const handleNotesSet1 = () => {
     setNotesSet(noteSets.set1);
-    setFrequencies(calculateFrequencies(noteSets.set1));
+    setFrequencies([]);
   };
 
   const handleNotesSet2 = () => {
     setNotesSet(noteSets.set2);
-    setFrequencies(calculateFrequencies(noteSets.set2));
+    setFrequencies([]);
+  };
+
+  const handleCalculateFrequencies = () => {
+    setFrequencies(calculateFrequencies());
   };
   return (
     <div className="App text-center p-8">
@@ -62,11 +68,17 @@ const Theory = () => {
       <div className="flex justify-center">
         <div>
           <h2 className="font-bold text-lg mb-2">Musical Notes</h2>
-          <Grid notes={notesSet} />
+          <Grid data={notesSet} />
         </div>
         <div className="ml-8">
           <h2 className="font-bold text-lg mb-2">Frequencies</h2>
-          <Grid notes={frequencies.map(freq => freq.toFixed(2) + ' Hz')} />
+          {frequencies.length > 0 ? (
+            <Grid data={frequencies.map(freq => freq.toFixed(2) + ' Hz')} />
+          ) : (
+            <button onClick={handleCalculateFrequencies} className="bg-blue-500 text-white px-4 py-2 rounded-md">
+              Calculate Frequencies
+            </button>
+          )}
         </div>
       </div>
     </div>
