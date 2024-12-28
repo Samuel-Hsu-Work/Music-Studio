@@ -2,8 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, 
   Route, Redirect, Routes,} from "react-router-dom";
 
-
-
 import Navbar from './components/NavBar';
 import Home from './components/Home';
 import Theory from './components/Theory'
