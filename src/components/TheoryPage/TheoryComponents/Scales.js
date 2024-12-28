@@ -1,7 +1,4 @@
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import React, { useState } from 'react';
-
-
 
 const GridCell = ({ content }) => {
   return (
@@ -21,7 +18,7 @@ const Grid = ({ data }) => {
   );
 };
 
-const Theory = () => {
+const Scales = () => {
   const [notesSet, setNotesSet] = useState([]);
   const [frequencies, setFrequencies] = useState([]);
 
@@ -51,28 +48,30 @@ const Theory = () => {
   };
 
   return (
-    <div className="App text-center p-8">
-      <h1 className="text-3xl font-bold mb-4 text-white">Musical Scales</h1>
-      <div className="mb-4">
-        <button onClick={handleNotesSet1} className="bg-blue-500 text-white px-4 py-2 rounded-md mb-2 mr-4">
-          C Major Scale
-        </button>
-        <button onClick={handleNotesSet2} className="bg-blue-500 text-white px-4 py-2 rounded-md mb-2">
-          D Major Scale
-        </button>
-      </div>
-      <div className="flex justify-center">
-        <div>
-          <h2 className="font-bold text-lg mb-2 text-white">Musical Notes</h2>
-          <Grid data={notesSet} />
+    <div>
+      <div className="App text-center p-8">
+        <h1 className="text-3xl font-bold mb-4 text-white">Musical Scales</h1>
+        <div className="mb-4">
+          <button onClick={handleNotesSet1} className="bg-blue-500 text-white px-4 py-2 rounded-md mb-2 mr-4">
+            C Major Scale
+          </button>
+          <button onClick={handleNotesSet2} className="bg-blue-500 text-white px-4 py-2 rounded-md mb-2">
+            D Major Scale
+          </button>
         </div>
-        <div className="ml-8">
-          <h2 className="font-bold text-lg mb-2 text-white">Notes Frequencies</h2>
-          <Grid data={frequencies.map(freq => freq.toFixed(2) + ' Hz')} />
+        <div className="flex justify-center">
+          <div>
+            <h2 className="font-bold text-lg mb-2 text-white">Musical Notes</h2>
+            <Grid data={notesSet} />
+          </div>
+          <div className="ml-8">
+            <h2 className="font-bold text-lg mb-2 text-white">Notes Frequencies</h2>
+            <Grid data={frequencies.map(freq => freq.toFixed(2) + ' Hz')} />
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-export default Theory
+export default Scales
